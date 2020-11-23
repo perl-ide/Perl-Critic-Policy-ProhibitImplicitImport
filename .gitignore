@@ -1,6 +1,6 @@
 .build
-/Perl-Critic-Policy-ImplicitImport*
 local/
+/Perl-Critic-Policy-ImplicitImport*
 *.sw*
-tidyall.ERR
 .tidyall.d/
+tidyall.ERR
