@@ -30,7 +30,7 @@ jobs:
         with:
           name: build_dir
           path: build_dir
-        if: $
+        if: ${{ github.actor != 'nektos/act' }}
   coverage-job:
     needs: build-job
     runs-on: ubuntu-latest
