@@ -21,14 +21,35 @@ sub supported_parameters {
             description => 'Modules which will be ignored by this policy.',
             behavior    => 'string list',
             list_always_present_values => [
-                'Data::Printer',
-                'DDP',
-                'Git::Sub',
-                'Moose',
-                'Moo',
-                'Mouse',
-                'Test::More',
-                'Test2::V0',
+                qw(
+                    Carp::Always
+                    Courriel::Builder
+                    Data::Dumper
+                    Data::Dumper::Concise
+                    Data::Printer
+                    DDP
+                    Exporter::Lite
+                    File::chdir
+                    Git::Sub
+                    HTTP::Message::PSGI
+                    Import::Into
+                    Mojolicious::Lite
+                    Moo
+                    Moo::Role
+                    Moose
+                    Moose::Exporter
+                    Moose::Role
+                    Moose::Util::TypeConstraints
+                    MooseX::LazyRequire
+                    MooseX::NonMoose
+                    MooseX::Role::Parameterized
+                    MooseX::SemiAffordanceAccessor
+                    Mouse
+                    Test2::V0
+                    Test::Class::Moose
+                    Test::Class::Moose::Role
+                    Test::More
+                    )
             ],
         },
     );
