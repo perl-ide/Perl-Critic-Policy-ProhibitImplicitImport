@@ -39,7 +39,7 @@ sub violates {
     my $ignore = $self->{_ignored_modules};
 
     if (
-           ( $elem->type // '' ) eq 'use'
+           ( $elem->type // q{} ) eq 'use'
         && ( $elem->module // q{} ) =~ m{[A-Z]}    # don't flag pragmas
         && !$elem->arguments
         && !exists $ignore->{ ( $elem->module // q{} ) }
