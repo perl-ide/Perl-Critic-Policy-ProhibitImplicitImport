@@ -26,7 +26,10 @@ use constant POLICY => 'Perl::Critic::Policy::ImplicitImport';
           two
         );
         use CCC ();
+        use DDD 4.19;
         use DDP;
+        use EEE 4.19 qw( encode_json );
+        use FFF 4.19 ();
         use Moose;
         use Path::Tiny;
         use Path::Tinier;
@@ -34,7 +37,11 @@ use constant POLICY => 'Perl::Critic::Policy::ImplicitImport';
 
 EOF
     my @violations = map { $_->source } $pc->critique( \$code );
-    is( \@violations, ['use Path::Tiny;'], 'Path::Tiny violation' );
+    is(
+        \@violations,
+        [ 'use DDD 4.19;', 'use Path::Tiny;' ],
+        'Path::Tiny violation'
+    );
 }
 
 done_testing();
