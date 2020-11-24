@@ -2,7 +2,7 @@ use strict;
 use warnings;
 package Perl::Critic::Policy::ImplicitImport;
 
-use Perl::Critic::Utils qw(:severities :classification :ppi);
+use Perl::Critic::Utils qw($SEVERITY_LOW);
 use parent 'Perl::Critic::Policy';
 
 our $VERSION = '0.000001';
