@@ -12,6 +12,7 @@ use constant EXPL =>
     'Using the a module without specifying an import list can result in importing many symbols. Import the functions or constants you want explicitly, or prevent the import with ().';
 
 sub applies_to       { 'PPI::Statement::Include' }
+
 sub default_severity { $SEVERITY_LOW }
 
 sub supported_parameters {
@@ -74,3 +75,35 @@ sub violates {
 1;
 
 # ABSTRACT: Prefer subroutine imports to be explicit
+
+=head1 NAME
+
+Perl::Critic::Policy::ImplicitImport
+
+=head1 DESCRIPTION
+
+Perl modules can implicitly import many symbols (functions and constants) if no imports are specified. To avoid this, and to assist in
+finding where functions have been imported from, specify the symbols you want
+to import explicitly in the C<use> statement. Alternatively, specify an empty
+import list with C<use Foo ()> to avoid importing any symbols, and fully
+qualify the functions or constants, such as C<Foo::strftime>.
+
+    use POSIX;                                                         # not ok
+    use POSIX ();                                                      # ok
+    use POSIX qw(fcntl);                                                 # ok
+    use POSIX qw(O_APPEND O_CREAT O_EXCL O_RDONLY O_RDWR O_WRONLY);    # ok
+
+=head1 CONFIGURATION
+
+By default, this policy ignores many modules (like L<Moo> and L<Moose> for
+which implicit imports are the expected and desired ways to use them. See the
+source of this module for a complete list. If you would like to ignore additional modules, this can be done via configuration:
+
+    [ImplicitImport]
+    ignored_modules = Git::Sub Regexp::Common
+
+=head1 ACKNOWLEDGEMENTS
+
+Much of this code and even some documentation has been inspired by and borrowed
+directly from L<Perl::Critic::Policy::Freenode::POSIXImports> and
+L<Perl::Critic::Policy::TooMuchCode>.
