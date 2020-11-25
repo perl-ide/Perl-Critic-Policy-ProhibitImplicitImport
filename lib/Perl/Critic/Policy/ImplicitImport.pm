@@ -11,7 +11,7 @@ use constant DESC => 'Using a module without an explicit import list';
 use constant EXPL =>
     'Using the a module without specifying an import list can result in importing many symbols. Import the functions or constants you want explicitly, or prevent the import with ().';
 
-sub applies_to       { 'PPI::Statement::Include' }
+sub applies_to { 'PPI::Statement::Include' }
 
 sub default_severity { $SEVERITY_LOW }
 
@@ -96,9 +96,10 @@ qualify the functions or constants, such as C<Foo::strftime>.
 
 =head1 CONFIGURATION
 
-By default, this policy ignores many modules (like L<Moo> and L<Moose> for
-which implicit imports are the expected and desired ways to use them. See the
-source of this module for a complete list. If you would like to ignore additional modules, this can be done via configuration:
+By default, this policy ignores many modules (like L<Moo> and L<Moose>) for
+which implicit imports provide the expected behaviour. See the source of this
+module for a complete list. If you would like to ignore additional modules,
+this can be done via configuration:
 
     [ImplicitImport]
     ignored_modules = Git::Sub Regexp::Common
