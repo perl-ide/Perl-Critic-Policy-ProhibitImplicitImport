@@ -50,7 +50,10 @@ sub supported_parameters {
                     Test2::V0
                     Test::Class::Moose
                     Test::Class::Moose::Role
+                    Test::JSON
                     Test::More
+                    Test::Number::Delta
+                    Test::XML
                     )
             ],
         },
