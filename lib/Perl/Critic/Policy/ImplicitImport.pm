@@ -31,6 +31,7 @@ sub supported_parameters {
                     DDP
                     Exporter::Lite
                     File::chdir
+                    FindBin
                     Git::Sub
                     HTTP::Message::PSGI
                     Import::Into
