@@ -93,7 +93,7 @@ qualify the functions or constants, such as C<Foo::strftime>.
 
     use POSIX;                                                         # not ok
     use POSIX ();                                                      # ok
-    use POSIX qw(fcntl);                                                 # ok
+    use POSIX qw(fcntl);                                               # ok
     use POSIX qw(O_APPEND O_CREAT O_EXCL O_RDONLY O_RDWR O_WRONLY);    # ok
 
 For modules which inherit from L<Test::Builder::Module>, you may need to use a different import syntax.
