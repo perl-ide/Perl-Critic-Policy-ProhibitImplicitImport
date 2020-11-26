@@ -50,7 +50,6 @@ sub supported_parameters {
                     Test2::V0
                     Test::Class::Moose
                     Test::Class::Moose::Role
-                    Test::JSON
                     Test::More
                     Test::Number::Delta
                     Test::XML
@@ -96,6 +95,11 @@ qualify the functions or constants, such as C<Foo::strftime>.
     use POSIX ();                                                      # ok
     use POSIX qw(fcntl);                                                 # ok
     use POSIX qw(O_APPEND O_CREAT O_EXCL O_RDONLY O_RDWR O_WRONLY);    # ok
+
+For modules which inherit from L<Test::Builder::Module>, you may need to use a different import syntax.
+
+    use Test::JSON;                          # not ok
+    use Test::JSON import => ['is_json'];    # ok
 
 =head1 CONFIGURATION
 
