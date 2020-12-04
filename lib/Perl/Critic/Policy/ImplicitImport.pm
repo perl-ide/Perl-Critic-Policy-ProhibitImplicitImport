@@ -29,6 +29,8 @@ sub supported_parameters {
                     Data::Dumper::Concise
                     Data::Printer
                     DDP
+                    Devel::Confess
+                    Encode::Guess
                     Exporter::Lite
                     File::chdir
                     FindBin
@@ -46,7 +48,11 @@ sub supported_parameters {
                     MooseX::NonMoose
                     MooseX::Role::Parameterized
                     MooseX::SemiAffordanceAccessor
+                    MooX::Options
+                    MooX::StrictConstructor
                     Mouse
+                    PerlIO::gzip
+                    Stepford::Role::Step
                     Test2::V0
                     Test::Class::Moose
                     Test::Class::Moose::Role
