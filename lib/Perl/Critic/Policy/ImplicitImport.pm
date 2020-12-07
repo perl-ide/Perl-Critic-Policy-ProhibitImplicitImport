@@ -44,6 +44,7 @@ sub supported_parameters {
                     Moose::Exporter
                     Moose::Role
                     Moose::Util::TypeConstraints
+                    MooseX::Getopt
                     MooseX::LazyRequire
                     MooseX::NonMoose
                     MooseX::Role::Parameterized
