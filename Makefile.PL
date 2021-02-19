@@ -2,30 +2,36 @@
 use strict;
 use warnings;
 
-use 5.006;
+use 5.010;
 
 use ExtUtils::MakeMaker;
 
 my %WriteMakefileArgs = (
-  "ABSTRACT" => "Prefer subroutine imports to be explicit",
+  "ABSTRACT" => "Prefer symbol imports to be explicit",
   "AUTHOR" => "Olaf Alders <olaf\@wundercounter.com>",
   "CONFIGURE_REQUIRES" => {
     "ExtUtils::MakeMaker" => 0
   },
-  "DISTNAME" => "Perl-Critic-Policy-ImplicitImport",
+  "DISTNAME" => "Perl-Critic-Policy-ProhibitImplicitImport",
   "LICENSE" => "perl",
-  "MIN_PERL_VERSION" => "5.006",
-  "NAME" => "Perl::Critic::Policy::ImplicitImport",
+  "MIN_PERL_VERSION" => "5.010",
+  "NAME" => "Perl::Critic::Policy::ProhibitImplicitImport",
   "PREREQ_PM" => {
+    "Perl::Critic::Policy" => 0,
+    "Perl::Critic::Utils" => 0,
+    "constant" => 0,
+    "parent" => 0,
     "strict" => 0,
     "warnings" => 0
   },
   "TEST_REQUIRES" => {
     "ExtUtils::MakeMaker" => 0,
     "File::Spec" => 0,
+    "Perl::Critic" => 0,
+    "Test2::V0" => 0,
     "Test::More" => 0
   },
-  "VERSION" => "0.001",
+  "VERSION" => "0.000001",
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -35,7 +41,13 @@ my %WriteMakefileArgs = (
 my %FallbackPrereqs = (
   "ExtUtils::MakeMaker" => 0,
   "File::Spec" => 0,
+  "Perl::Critic" => 0,
+  "Perl::Critic::Policy" => 0,
+  "Perl::Critic::Utils" => 0,
+  "Test2::V0" => 0,
   "Test::More" => 0,
+  "constant" => 0,
+  "parent" => 0,
   "strict" => 0,
   "warnings" => 0
 );

@@ -6,7 +6,7 @@ use warnings;
 use Perl::Critic ();
 use Test2::V0;
 
-use constant POLICY => 'Perl::Critic::Policy::ImplicitImport';
+use constant POLICY => 'Perl::Critic::Policy::ProhibitImplicitImport';
 
 {
     my $pc = Perl::Critic->new( -only => 1 );

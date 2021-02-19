@@ -1,16 +1,52 @@
-[![Actions Status](https://github.com/oalders/Perl-Critic-Policy-ImplicitImport/workflows/dzil-build-and-test/badge.svg)](https://github.com/oalders/Perl-Critic-Policy-ImplicitImport/actions)
-[![codecov](https://codecov.io/gh/oalders/Perl-Critic-Policy-ImplicitImport/branch/master/graph/badge.svg)](https://codecov.io/gh/oalders/Perl-Critic-Policy-ImplicitImport)
-[![Kwalitee status](http://cpants.cpanauthors.org/dist/Perl-Critic-Policy-ImplicitImport.png)](https://cpants.cpanauthors.org/dist/Perl-Critic-Policy-ImplicitImport)
-[![GitHub tag](https://img.shields.io/github/tag/oalders/Perl-Critic-Policy-ImplicitImport.svg)]()
-[![Cpan license](https://img.shields.io/cpan/l/Perl-Critic-Policy-ImplicitImport.svg)](https://metacpan.org/release/Perl-Critic-Policy-ImplicitImport)
+[![Actions Status](https://github.com/oalders/Perl-Critic-Policy-ProhibitImplicitImport/workflows/dzil-build-and-test/badge.svg)](https://github.com/oalders/Perl-Critic-Policy-ProhibitImplicitImport/actions)
+[![codecov](https://codecov.io/gh/oalders/Perl-Critic-Policy-ProhibitImplicitImport/branch/master/graph/badge.svg)](https://codecov.io/gh/oalders/Perl-Critic-Policy-ProhibitImplicitImport)
+[![Kwalitee status](https://cpants.cpanauthors.org/dist/Perl-Critic-Policy-ProhibitImplicitImport.png)](https://cpants.cpanauthors.org/dist/Perl-Critic-Policy-ProhibitImplicitImport)
+[![GitHub tag](https://img.shields.io/github/tag/oalders/Perl-Critic-Policy-ProhibitImplicitImport.svg)]()
+[![Cpan license](https://img.shields.io/cpan/l/Perl-Critic-Policy-ProhibitImplicitImport.svg)](https://metacpan.org/release/Perl-Critic-Policy-ProhibitImplicitImport)
 
 # NAME
 
-Perl::Critic::Policy::ImplicitImport - Prefer subroutine imports to be explicit
+Perl::Critic::Policy::ProhibitImplicitImport - Prefer symbol imports to be explicit
 
 # VERSION
 
-version 0.001
+version 0.000001
+
+# DESCRIPTION
+
+Some Perl modules can implicitly import many symbols if no imports are
+specified. To avoid this, and to assist in finding where symbols have been
+imported from, specify the symbols you want to import explicitly in the `use`
+statement.  Alternatively, specify an empty import list with `use Foo ()` to
+avoid importing any symbols at all, and fully qualify the functions or
+constants, such as `Foo::strftime`.
+
+    use POSIX;                                                         # not ok
+    use POSIX ();                                                      # ok
+    use POSIX qw(fcntl);                                               # ok
+    use POSIX qw(O_APPEND O_CREAT O_EXCL O_RDONLY O_RDWR O_WRONLY);    # ok
+
+For modules which inherit from [Test::Builder::Module](https://metacpan.org/pod/Test%3A%3ABuilder%3A%3AModule), you may need to use a
+different import syntax.
+
+    use Test::JSON;                          # not ok
+    use Test::JSON import => ['is_json'];    # ok
+
+# CONFIGURATION
+
+By default, this policy ignores many modules (like [Moo](https://metacpan.org/pod/Moo) and [Moose](https://metacpan.org/pod/Moose)) for
+which implicit imports provide the expected behaviour. See the source of this
+module for a complete list. If you would like to ignore additional modules,
+this can be done via configuration:
+
+    [ProhibitImplicitImport]
+    ignored_modules = Git::Sub Regexp::Common
+
+# ACKNOWLEDGEMENTS
+
+Much of this code and even some documentation has been inspired by and borrowed
+directly from [Perl::Critic::Policy::Freenode::POSIXImports](https://metacpan.org/pod/Perl%3A%3ACritic%3A%3APolicy%3A%3AFreenode%3A%3APOSIXImports) and
+[Perl::Critic::Policy::TooMuchCode](https://metacpan.org/pod/Perl%3A%3ACritic%3A%3APolicy%3A%3ATooMuchCode).
 
 # AUTHOR
 
