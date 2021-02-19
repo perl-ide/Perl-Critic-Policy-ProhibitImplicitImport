@@ -1,11 +1,12 @@
+package Perl::Critic::Policy::ProhibitImplicitImport;
+
 use strict;
 use warnings;
-package Perl::Critic::Policy::ImplicitImport;
+
+our $VERSION = '0.000001';
 
 use Perl::Critic::Utils qw($SEVERITY_LOW);
 use parent 'Perl::Critic::Policy';
-
-our $VERSION = '0.000001';
 
 use constant DESC => 'Using a module without an explicit import list';
 use constant EXPL =>
@@ -83,11 +84,7 @@ sub violates {
 
 1;
 
-# ABSTRACT: Prefer subroutine imports to be explicit
-
-=head1 NAME
-
-Perl::Critic::Policy::ImplicitImport
+# ABSTRACT: Prefer symbol imports to be explicit
 
 =head1 DESCRIPTION
 
