@@ -3,7 +3,7 @@ package Perl::Critic::Policy::ProhibitImplicitImport;
 use strict;
 use warnings;
 
-our $VERSION = '0.000001';
+our $VERSION = '0.000002';
 
 use Perl::Critic::Utils qw($SEVERITY_LOW);
 use parent 'Perl::Critic::Policy';
