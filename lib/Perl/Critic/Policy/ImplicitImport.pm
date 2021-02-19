@@ -70,12 +70,11 @@ sub violates {
     my ( $self, $elem ) = @_;
     my $ignore = $self->{_ignored_modules};
 
-    if (
-           ( $elem->type // q{} ) eq 'use'
-        && ( $elem->module // q{} ) =~ m{[A-Z]}    # don't flag pragmas
+    if (  !$elem->pragma
+        && $elem->type
+        && $elem->type eq 'use'
         && !$elem->arguments
-        && !exists $ignore->{ ( $elem->module // q{} ) }
-    ) {
+        && !exists $ignore->{ ( $elem->module // q{} ) } ) {
         return $self->violation( DESC, EXPL, $elem );
     }
 
