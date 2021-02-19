@@ -9,7 +9,7 @@ our $VERSION = '0.000001';
 
 use constant DESC => 'Using a module without an explicit import list';
 use constant EXPL =>
-    'Using the a module without specifying an import list can result in importing many symbols. Import the functions or constants you want explicitly, or prevent the import with ().';
+    'Using the a module without specifying an import list can result in importing many symbols. Import the symbols you want explicitly, or prevent implicit imports via ().';
 
 sub applies_to { 'PPI::Statement::Include' }
 
@@ -92,18 +92,20 @@ Perl::Critic::Policy::ImplicitImport
 
 =head1 DESCRIPTION
 
-Perl modules can implicitly import many symbols (functions and constants) if no imports are specified. To avoid this, and to assist in
-finding where functions have been imported from, specify the symbols you want
-to import explicitly in the C<use> statement. Alternatively, specify an empty
-import list with C<use Foo ()> to avoid importing any symbols, and fully
-qualify the functions or constants, such as C<Foo::strftime>.
+Some Perl modules can implicitly import many symbols if no imports are
+specified. To avoid this, and to assist in finding where symbols have been
+imported from, specify the symbols you want to import explicitly in the C<use>
+statement.  Alternatively, specify an empty import list with C<use Foo ()> to
+avoid importing any symbols at all, and fully qualify the functions or
+constants, such as C<Foo::strftime>.
 
     use POSIX;                                                         # not ok
     use POSIX ();                                                      # ok
     use POSIX qw(fcntl);                                               # ok
     use POSIX qw(O_APPEND O_CREAT O_EXCL O_RDONLY O_RDWR O_WRONLY);    # ok
 
-For modules which inherit from L<Test::Builder::Module>, you may need to use a different import syntax.
+For modules which inherit from L<Test::Builder::Module>, you may need to use a
+different import syntax.
 
     use Test::JSON;                          # not ok
     use Test::JSON import => ['is_json'];    # ok
