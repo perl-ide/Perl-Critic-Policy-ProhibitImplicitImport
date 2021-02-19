@@ -60,7 +60,7 @@ sub supported_parameters {
                     Test::More
                     Test::Number::Delta
                     Test::XML
-                    )
+                )
             ],
         },
     );
